@@ -1,0 +1,72 @@
+{
+  "name": "projmgr",
+  "displayName": "projmgr",
+  "description": "Project creation wizard for VSCode",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+      "commands": [
+          {
+              "command": "extension.createProjectDirectory",
+              "title": "Create Project Directory",
+              "category": "File"
+          }
+      ],
+      "menus": {
+          "editor/title": [
+              {
+                  "command": "extension.createProjectDirectory",
+                  "when": "editorLangId == plaintext",
+                  "group": "navigation"
+              }
+          ],
+          "explorer/context": [
+              {
+                  "command": "extension.createProjectDirectory",
+                  "when": "resourceLangId == plaintext",
+                  "group": "navigation"
+              }
+          ]
+      },
+      "configuration": {
+          "type": "object",
+          "title": "Project Wizard Settings",
+          "properties": {
+              "projectWizard.baseDirectory": {
+                  "type": "string",
+                  "default": "",
+                  "description": "Default base directory where new projects will be created"
+              }
+          }
+      }
+  },
+  "activationEvents": [
+      "onCommand:extension.createProjectDirectory",
+      "onLanguage:plaintext"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.94.0",
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "eslint": "^9.13.0",
+    "typescript": "^5.6.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
