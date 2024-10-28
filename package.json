@@ -2,7 +2,8 @@
   "name": "projmgr",
   "displayName": "projmgr",
   "description": "Project creation wizard for VSCode",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "repository": "https://github.com/sunyinqi0508/projmgr",
   "engines": {
     "vscode": "^1.94.0"
   },
